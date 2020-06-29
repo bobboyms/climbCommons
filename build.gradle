@@ -1,0 +1,100 @@
+plugins {
+    id 'java'
+    id "com.jfrog.bintray" version "1.8.4"
+}
+
+group 'br.com.climb'
+version '1.0.0'
+
+repositories {
+    jcenter()
+}
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_1_8
+    targetCompatibility = JavaVersion.VERSION_1_8
+}
+
+dependencies {
+    compile 'com.google.guava:guava:28.2-jre'
+    compile 'io.jsonwebtoken:jjwt:0.7.0'
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+}
+
+test {
+    useJUnitPlatform()
+}
+
+allprojects {
+    repositories {
+        jcenter()
+    }
+    apply plugin: 'maven'
+    apply plugin: 'maven-publish'
+    apply plugin: 'java'
+}
+
+def pomConfig = {
+    licenses {
+        license {
+            name "The Apache Software License, Version 2.0"
+            url "http://www.apache.org/licenses/LICENSE-2.0.txt"
+            distribution "repo"
+        }
+    }
+    developers {
+        developer {
+            id "br.com.climbCommons"
+            name "climb-commons"
+            email "thiago.luiz.rodriguez@gmail.com"
+        }
+    }
+
+    scm {
+        url "https://github.com/bobboyms/climbCommons"
+    }
+}
+
+task sourceJar(type: Jar) {
+    from sourceSets.main.allJava
+    archiveClassifier = "sources"
+}
+
+publishing {
+    publications {
+        MyPublication(MavenPublication) {
+            from components.java
+            artifact sourceJar
+            groupId 'br.com.climbcommons'
+            artifactId 'climb-commons'
+            version '1.0.0'
+            pom.withXml {
+                def root = asNode()
+                root.appendNode('description', 'Simple commons')
+                root.appendNode('name', 'climbCommons')
+                root.appendNode('url', 'https://github.com/bobboyms/climbCommons')
+                root.children().last() + pomConfig
+            }
+        }
+    }
+}
+
+bintray {
+    user = 'bobboyms'
+    key = '98e82d72304225bd12b4501c2f9997a12f9c00b1'
+    publications = ['MyPublication']
+    pkg {
+        repo = 'climbCommons'
+        name = 'climb-commons'
+        userOrg = user
+        licenses = ['Apache-2.0']
+        vcsUrl = 'https://github.com/bobboyms/climbCommons'
+        labels = ['Commons']
+        publicDownloadNumbers = true
+        version {
+            name = '1.0.0'
+            desc = ''
+            vcsTag = '1.0.0'
+        }
+    }
+}
