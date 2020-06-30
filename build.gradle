@@ -4,7 +4,7 @@ plugins {
 }
 
 group 'br.com.climb'
-version '1.0.1'
+version '1.0.2'
 
 repositories {
     jcenter()
@@ -68,7 +68,7 @@ publishing {
             artifact sourceJar
             groupId 'br.com.climbcommons'
             artifactId 'climb-commons'
-            version '1.0.1'
+            version '1.0.2'
             pom.withXml {
                 def root = asNode()
                 root.appendNode('description', 'Simple commons')
@@ -93,9 +93,9 @@ bintray {
         labels = ['Commons']
         publicDownloadNumbers = true
         version {
-            name = '1.0.1'
+            name = '1.0.2'
             desc = ''
-            vcsTag = '1.0.1'
+            vcsTag = '1.0.2'
         }
     }
 }
