@@ -5,8 +5,8 @@ import java.util.Map;
 import java.util.Set;
 
 public interface DiscoveryRequest extends Serializable {
+    Map<String, Set<Long>> getReservedWords();
     Map<String, Set<String>> getUrls();
     String getIpAddress();
     String getPort();
-
 }

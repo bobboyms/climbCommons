@@ -7,6 +7,7 @@ public class DiscoveryRequestObject implements DiscoveryRequest {
 
     private String ipAddress;
     private String port;
+    private Map<String, Set<Long>> reservedWords;
 
     //METHOD, URLS
     private Map<String, Set<String>> urls;
@@ -21,6 +22,15 @@ public class DiscoveryRequestObject implements DiscoveryRequest {
 
     public void setUrls(Map<String, Set<String>> urls) {
         this.urls = urls;
+    }
+
+    public void setReservedWords(Map<String, Set<Long>> reservedWords) {
+        this.reservedWords = reservedWords;
+    }
+
+    @Override
+    public Map<String, Set<Long>> getReservedWords() {
+        return reservedWords;
     }
 
     @Override
