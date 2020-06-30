@@ -28,6 +28,10 @@ public class PropertiesFile extends ConfigFileBean implements ConfigFile {
     protected void generateConfigData(Properties properties) {
         super.setPackge(properties.getProperty("framework.package.url"));
         super.setSecurityUrl(properties.getProperty("framework.security.url"));
+        super.setGatewayIp(properties.getProperty("framework.gateway.ip"));
+        super.setGatewayPort(properties.getProperty("framework.gateway.port"));
+        super.setLocalIp(properties.getProperty("framework.local.ip"));
+        super.setLocalPort(properties.getProperty("framework.local.port"));
     }
 
     public PropertiesFile(String fileName) throws ConfigFileException, IOException {
