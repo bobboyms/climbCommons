@@ -32,6 +32,8 @@ public class PropertiesFile extends ConfigFileBean implements ConfigFile {
         super.setGatewayPort(properties.getProperty("framework.gateway.port"));
         super.setLocalIp(properties.getProperty("framework.local.ip"));
         super.setLocalPort(properties.getProperty("framework.local.port"));
+        super.setMessageIp(properties.getProperty("framework.message.ip"));
+        super.setMessagePort(properties.getProperty("framework.message.port"));
     }
 
     public PropertiesFile(String fileName) throws ConfigFileException, IOException {

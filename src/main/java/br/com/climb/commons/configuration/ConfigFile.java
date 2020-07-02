@@ -8,5 +8,7 @@ public interface ConfigFile {
     String getGatewayPort();
     String getLocalIp();
     String getLocalPort();
+    String getMessageIp();
+    String getMessagePort();
 
 }
