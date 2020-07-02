@@ -12,6 +12,7 @@ public final class Methods {
     public static final Map<String, Method> PUT = new ConcurrentHashMap<>();
     public static final Map<String, Method> DELETE = new ConcurrentHashMap<>();
 
+
     public static final Map<String, Set<Long>> RESERVED_WORDS = new ConcurrentHashMap<>();
 
     private Methods() {}

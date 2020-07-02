@@ -10,7 +10,7 @@ public abstract class GenericTcpClientHandler<T> extends IoHandlerAdapter implem
 
     @Override
     public void messageReceived(IoSession session, Object message) throws Exception {
-        System.out.println("Recebido: " +  message);
+//        System.out.println("Recebido: " +  message);
         response = (T)message;
         received = true;
     }
