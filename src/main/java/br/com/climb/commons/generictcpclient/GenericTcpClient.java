@@ -11,7 +11,7 @@ import java.net.InetSocketAddress;
 
 public abstract class GenericTcpClient<T> implements TcpClient<T> {
 
-    private static final int TIMEOUT = 1000;
+    private static final int TIMEOUT = 30000;
     private final GenericTcpClientHandler clientHandler;
 
     private final String hostname;

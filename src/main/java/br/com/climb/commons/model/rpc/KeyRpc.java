@@ -1,6 +1,7 @@
 package br.com.climb.commons.model.rpc;
 
 import java.io.Serializable;
+import java.util.List;
 import java.util.Objects;
 
 public class KeyRpc implements Serializable {
@@ -10,10 +11,12 @@ public class KeyRpc implements Serializable {
 
     private final String uuid;
     private final String type;
+    private final List<String> methods;
 
-    public KeyRpc(String uuid, String type) {
+    public KeyRpc(String uuid, String type, List<String> methods) {
         this.uuid = uuid;
         this.type = type;
+        this.methods = methods;
     }
 
     public String getUuid() {
@@ -22,6 +25,10 @@ public class KeyRpc implements Serializable {
 
     public String getType() {
         return type;
+    }
+
+    public List<String> getMethods() {
+        return methods;
     }
 
     @Override
@@ -41,6 +48,8 @@ public class KeyRpc implements Serializable {
     public String toString() {
         return "KeyRpc{" +
                 "uuid='" + uuid + '\'' +
+                ", type='" + type + '\'' +
+                ", methods=" + methods +
                 '}';
     }
 }
